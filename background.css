@@ -1,14 +1,14 @@
 /* Don't blind dark theme users */
 
 /* https://github.com/catppuccin/catppuccin#-palettes -> Macchiato */
-html {
+html, body {
   background: #24273a;
   color: #cad3f5;
 }
 
 /* https://github.com/catppuccin/catppuccin#-palettes -> Latte */
 @media (prefers-color-scheme: light) {
-  html {
+  html, body {
     background: #eff1f5;
     color: #4c4f69;
   }
