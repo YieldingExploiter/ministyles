@@ -1,0 +1,7 @@
+/* Make links not look garbage */
+a {
+  color: #1e66f5;
+}
+a:visited {
+  color: #7287fd;
+}
