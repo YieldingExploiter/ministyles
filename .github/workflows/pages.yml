@@ -36,13 +36,13 @@ jobs:
         run: node .github/combination-gen.js
       - name: Add gen thing
         run: node .github/import-list.js
-      - name: Build with Jekyll
+      - name: Beerware
+        run: node .github/add-license.js
+      - name: Build Markdown with Jekyll
         uses: actions/jekyll-build-pages@v1
         with:
           source: ./
           destination: ./_site
-      - name: Beerware
-        run: node .github/add-license.js
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
       - name: Deploy to GitHub Pages
