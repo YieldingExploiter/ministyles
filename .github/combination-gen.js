@@ -41,7 +41,7 @@ const items5 = items4.map(v=>JSON.parse(v))
 
 const c = items5.length;
 items5.forEach((v,idx)=>{
-  console.log(`[${v+1} of ${c}] Working on ${v}...`)
+  console.log(`[${idx+1} of ${c}] Working on ${v}...`)
   const combinationFilename = v.map(v=>{
     const split = v.split('.');
     split.pop();
