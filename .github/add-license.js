@@ -38,8 +38,6 @@ beerWare.css=beerWare.ts;
 beerWare.scss=beerWare.ts;
 beerWare.sass=beerWare.ts;
 beerWare.yml=beerWare.yaml;
-beerWare.env=beerWare.yaml;
-beerWare.gitignore=beerWare.yaml;
 beerWare.htm=beerWare.html;
 beerWare.xml=beerWare.html;
 beerWare.xaml=beerWare.html;
@@ -64,8 +62,12 @@ const recursiveReadDirSync = function(dirPath, arrayOfFiles) {
 }
 // perform shit
 recursiveReadDirSync(process.cwd()).forEach(v=>{
-  const ext = v.split('.').pop().toLowerCase
+  if (v.split('\\').join('/').split('/').filter(v=>v.startsWith('.')).length > 0) return console.log('Ignoring hidden file',v);
+  const ext = v.split('.').pop().toLowerCase();
   let file = fs.readFileSync(v,'utf-8')
-  if (beerWare[ext] && !file.trim().startsWith(beerWare[ext])) file = `${beerWare[ext]}
-${file}`
+  if (beerWare[ext] && !file.trim().startsWith(beerWare[ext])) {
+    console.log('Beer-ing',v)
+    fs.writeFileSync(v,`${beerWare[ext]}
+${file}`)
+  }
 })
