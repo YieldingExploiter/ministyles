@@ -4,6 +4,19 @@ Mini-Styles for sites to avoid re-writing common styles too often, useful for ma
 ## Styles
 Below, you can find a semi-complete (excluding ones with >3 stylesheets combined) list of style files available.
 
+To load these, copy the URL & use one of the following in your HEAD tag:
+
+###### Option 1
+
+```html
+<style>@import url('PUT THE URL YOU COPIED HERE');</style>
+```
+
+###### Option 2
+```html
+<link rel="stylesheet" href="PUT THE URL YOU COPIED HERE" />
+```
+
 ### Uncombined
 You can combine any of these' filenames (excluding .css; add .css at the end of the list of styles) with `+` to get a single css file with all of their contents - the contents are in the order you specify them in.
 
