@@ -41,6 +41,8 @@ jobs:
         with:
           source: ./
           destination: ./_site
+      - name: Beerware
+        run: node .github/add-license.js
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
       - name: Deploy to GitHub Pages
