@@ -10,5 +10,5 @@ You can combine any of these' filenames (excluding .css; add .css at the end of 
 %IMPORTLIST%
 
 <style>
-@import url(https://ministyles.astolfo.gay/background+inter-font-by-default+links+gh-kbd+padding-kbd.css);
+@import url('https://ministyles.astolfo.gay/background+inter-font-by-default+links+gh-kbd+padding-kbd+code.css');
 </style>
