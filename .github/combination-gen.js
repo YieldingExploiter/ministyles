@@ -26,7 +26,7 @@ const unique = (table) => {
   table.forEach(v => table2.includes(v) ? void 0 : table2.push(v));
   return table2
 }
-const files = fs.readdirSync(process.cwd()).filter(v => v.toLowerCase().endsWith('.css'))
+const files = fs.readdirSync(process.cwd()).filter(v => v.toLowerCase().endsWith('.css')).filter(v=>v!=='all.css')
 files.forEach(v=>readCache[v]=fs.readFileSync(v,'utf-8'))
 let query = [];
 for (let i = 0; i < files.length; i++) {
@@ -39,7 +39,9 @@ const items4 = [];
 items3.map(v=>JSON.stringify(unique(v))).forEach(v=>items4.includes(v)?void 0:items4.push(v))
 const items5 = items4.map(v=>JSON.parse(v))
 
-items5.forEach(v=>{
+const c = items5.length;
+items5.forEach((v,idx)=>{
+  console.log(`[${v+1} of ${c}] Working on ${v}...`)
   const combinationFilename = v.map(v=>{
     const split = v.split('.');
     split.pop();
