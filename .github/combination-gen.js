@@ -1,5 +1,6 @@
 // unoptimized semi-spaghetti from hell
 const fs = require('fs');
+const readCache = {};
 const _allPossibleCases = (arr) => {
   if (arr.length == 1) {
     return arr[0];
@@ -25,7 +26,8 @@ const unique = (table) => {
   table.forEach(v => table2.includes(v) ? void 0 : table2.push(v));
   return table2
 }
-const files = fs.readdirSync(process.cwd()).filter(v=>v.toLowerCase().endsWith('.css'))
+const files = fs.readdirSync(process.cwd()).filter(v => v.toLowerCase().endsWith('.css'))
+files.forEach(v=>readCache[v]=fs.readFileSync(v,'utf-8'))
 let query = [];
 for (let i = 0; i < files.length; i++) {
   query.push([...files,''])
@@ -43,6 +45,6 @@ items5.forEach(v=>{
     split.pop();
     return split.join('.')
   }).join('+')+'.css'
-  const fileContent = v.map(v=>'/* '+v+' */\n'+fs.readFileSync(v,'utf-8')).join('\n/* ============================= */\n')
+  const fileContent = v.map(v=>'/* '+v+' */\n'+readCache[v]).join('\n/* ============================= */\n')
   fs.writeFileSync(combinationFilename,fileContent)
 })
