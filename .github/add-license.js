@@ -61,9 +61,25 @@ const recursiveReadDirSync = function(dirPath, arrayOfFiles) {
   return arrayOfFiles
 }
 // perform shit
+const ignore = require('ignore')()
+let p = process.cwd();
+for(i=0;i<50;i++) {
+  if (fs.existsSync(path.join(p,'.beerignore'))){
+    p = path.join(p,'.beerignore')
+  }
+  if (fs.existsSync(path.join(p,'.licenseignore'))){
+    p = path.join(p,'.licenseignore')
+    break;
+  }
+  const p2 = path.resolve(p,'..')
+  if (p2 === p)break;
+  p = p2;
+}
+if (fs.statSync(p).isFile())ignore.add(fs.readFileSync(p))
 recursiveReadDirSync(process.cwd()).forEach(v=>{
+  if (v.includes('.git/')) return;
   const relPath = path.relative(process.cwd(),v);
-  if (relPath.split('\\').join('/').split('/').filter(v=>v.startsWith('.')).length > 0) return console.log('Ignoring hidden file',relPath);
+  if (ignore.ignores(relPath)) return;
   const ext = v.split('.').pop().toLowerCase();
   let file = fs.readFileSync(v, 'utf-8');
   const fileNoNl = file.split('\r\n').join('\n').split('\n').map(v=>v.trim()).join('')
