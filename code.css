@@ -1,5 +1,5 @@
 /* Makes the code element not look shit */
-code {
+code:not(.default) {
   padding:4px 4px;
   border-radius:8px;
   background:#1e2030;
