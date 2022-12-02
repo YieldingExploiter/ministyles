@@ -20,6 +20,6 @@ fs.readdirSync('.').filter(v=>v.endsWith('.css')).sort((a,b)=>getCount(a)>getCou
   itemCount = thisItemCount
 })
 
-README = README.split('%IMPORTLIST%').join(importMd)+'\n\n<br/>*Combinations above depth 3 aren\'t listed here, however you can still load them. See above for instructions.*'
+README = README.split('%IMPORTLIST%').join(importMd+'\n\n<br/>*Combinations above depth 3 aren\'t listed here, however you can still load them. See above for instructions.*')
 
 fs.writeFileSync('index.md', README)
