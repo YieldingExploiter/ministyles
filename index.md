@@ -4,5 +4,5 @@ Mini-Styles for sites to avoid re-writing common styles too often, useful for ma
 %IMPORTLIST%
 
 <style>
-@import url(https://ministyles.astolfo.gay/background+inter-font-by-default+links.css);
+@import url(https://ministyles.astolfo.gay/background+inter-font-by-default+links+gh-kbd+padding-kbd.css);
 </style>
