@@ -1,0 +1,3 @@
+kbd:not(.default) {
+  padding-bottom: 4px;
+}
