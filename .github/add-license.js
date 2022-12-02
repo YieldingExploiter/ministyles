@@ -10,13 +10,13 @@ const email = 'pleasego@nuke.africa'
 /* mappings for beerware license */
 const beerWare = {
   ts: `/*!
- * "THE BEER-WARE LICENSE" (Revision 42):
+ * @license "THE BEER-WARE LICENSE" (Revision 42):
  * <${email}> wrote this file. As long as you retain this notice you
  * can do whatever you want with this stuff. If we meet some day, and you think
  * this stuff is worth it, you can buy me a beer in return | ${author}
  */`,
   html: `<!--
- "THE BEER-WARE LICENSE" (Revision 42):
+ @license "THE BEER-WARE LICENSE" (Revision 42):
  <${email}> wrote this file. As long as you retain this notice you
  can do whatever you want with this stuff. If we meet some day, and you think
  this stuff is worth it, you can buy me a beer in return | ${author}
@@ -26,7 +26,7 @@ const beerWare = {
 # can do whatever you want with this stuff. If we meet some day, and you think
 # this stuff is worth it, you can buy me a beer in return | ${author}`,
   lua: `--[[
-  "THE BEER-WARE LICENSE" (Revision 42):
+  @license "THE BEER-WARE LICENSE" (Revision 42):
   <${email}> wrote this file. As long as you retain this notice you
   can do whatever you want with this stuff. If we meet some day, and you think
   this stuff is worth it, you can buy me a beer in return | ${author}
@@ -64,8 +64,9 @@ const recursiveReadDirSync = function(dirPath, arrayOfFiles) {
 recursiveReadDirSync(process.cwd()).forEach(v=>{
   if (v.split('\\').join('/').split('/').filter(v=>v.startsWith('.')).length > 0) return console.log('Ignoring hidden file',v);
   const ext = v.split('.').pop().toLowerCase();
-  let file = fs.readFileSync(v,'utf-8')
-  if (beerWare[ext] && !file.trim().startsWith(beerWare[ext])) {
+  let file = fs.readFileSync(v, 'utf-8');
+  const fileNoNl = file.split('\r\n').join('\n').split('\n').map(v=>v.trim()).join('')
+  if (beerWare[ext] && !file.trim().startsWith(beerWare[ext]) && !file.includes('@beerware-ignore') && !file.includes('@no-add-license') && !file.includes('@license') && !fileNoNl.includes('The above copyright notice and this permission notice shall be included in all') && !fileNoNl.includes('MIT') && !fileNoNl.includes('GNU Affero General Public License') && !fileNoNl.includes('GNU General Public License')) {
     console.log('Beer-ing',v)
     fs.writeFileSync(v,`${beerWare[ext]}
 ${file}`)
