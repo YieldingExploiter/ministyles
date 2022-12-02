@@ -31,6 +31,8 @@ jobs:
         run: cat *.css > all.css
       - name: Create Combos for optimization
         run: node .github/combination-gen.js
+      - name: Add gen thing
+        run: node .github/import-list.js
       - name: Build with Jekyll
         uses: actions/jekyll-build-pages@v1
         with:
