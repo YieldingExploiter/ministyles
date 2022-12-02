@@ -56,6 +56,21 @@ const recursiveReadDirSync = root => {
   recurse(root)
   return files
 }
+/** list of things to ignore files if found */
+const ignoreIf = [
+  '@beerware-ignore',
+  '@license-ignore',
+  '@no-add-license',
+  '@beerignore',
+  '@license',
+  'AGPL',
+  'GPL',
+  'LGPL',
+  'THE BEER-WARE LICENSE',
+  'General Public License',
+  'MIT License',
+  'The above copyright notice and this permission notice shall be included in all'
+]
 // perform shit
 const ignore = require('ignore')()
 let p = process.cwd();
@@ -72,16 +87,18 @@ for(i=0;i<50;i++) {
   p = p2;
 }
 if (fs.statSync(p).isFile())ignore.add(fs.readFileSync(p))
-recursiveReadDirSync(process.cwd()).forEach(v=>{
-  if (v.includes('.git/')) return;
-  const relPath = path.relative(process.cwd(),v);
+recursiveReadDirSync(process.cwd()).forEach(relPath=>{
+  if (relPath.includes('.git/')) return;
   if (ignore.ignores(relPath)) return;
-  const ext = v.split('.').pop().toLowerCase();
-  let file = fs.readFileSync(v, 'utf-8');
-  const fileNoNl = file.split('\r\n').join('\n').split('\n').map(v=>v.trim()).join('')
-  if (beerWare[ext] && !file.trim().startsWith(beerWare[ext]) && !file.includes('@beerware-ignore') && !file.includes('@no-add-license') && !file.includes('@license') && !fileNoNl.includes('The above copyright notice and this permission notice shall be included in all') && !fileNoNl.includes('MIT') && !fileNoNl.includes('GNU Affero General Public License') && !fileNoNl.includes('GNU General Public License')) {
+  const ext = relPath.split('.').pop().toLowerCase();
+  let file = fs.readFileSync(relPath, 'utf-8');
+  const fileNoNl = file.split('\r\n').join('\n').split('\n').map(v => v.trim()).join('')
+  for (const item of ignoreIf) {
+    if (fileNoNl.includes(item)) return console.log('Ignoring file',relPath,'due to pattern',item)
+  }
+  if (beerWare[ext]) {
     console.log('Beer-ing',relPath)
-    fs.writeFileSync(v,`${beerWare[ext]}
+    fs.writeFileSync(relPath,`${beerWare[ext]}
 ${file}`)
   }
 })
