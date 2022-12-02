@@ -26,6 +26,7 @@ You can combine any of these' filenames (excluding .css; add .css at the end of 
   @import url('https://ministyles.astolfo.gay/background+inter-font-by-default+links+gh-kbd+padding-kbd+code.css');
   .markdown-body .highlight pre, .markdown-body pre, .highlight {
     background: #181926;
+    border-radius: 8px;
   }
   .markdown-body .highlight pre code, .markdown-body pre code {
     filter: invert() hue-rotate(180deg);
