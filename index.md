@@ -1,6 +1,12 @@
 # ministyles
 Mini-Styles for sites to avoid re-writing common styles too often, useful for making simple HTML that doesn't look complete garbage.
 
+## License
+"THE BEER-WARE LICENSE" (Revision 42):<br/>
+<pleasego@nuke.africa> wrote this file. As long as you retain this notice you<br/>
+can do whatever you want with this stuff. If we meet some day, and you think<br/>
+this stuff is worth it, you can buy me a beer in return | YieldingExploiter<br/>
+
 ## Styles
 Below, you can find a semi-complete (excluding ones with >3 stylesheets combined) list of style files available.
 
