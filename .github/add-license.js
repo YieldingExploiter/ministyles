@@ -62,7 +62,7 @@ const recursiveReadDirSync = function(dirPath, arrayOfFiles) {
 }
 // perform shit
 recursiveReadDirSync(process.cwd()).forEach(v=>{
-  if (v.split('\\').join('/').split('/').filter(v=>v.startsWith('.')).length > 0) return console.log('Ignoring hidden file',v);
+  if (path.relative(v,process.cwd()).split('\\').join('/').split('/').filter(v=>v.startsWith('.')).length > 0) return console.log('Ignoring hidden file',v);
   const ext = v.split('.').pop().toLowerCase();
   let file = fs.readFileSync(v, 'utf-8');
   const fileNoNl = file.split('\r\n').join('\n').split('\n').map(v=>v.trim()).join('')
