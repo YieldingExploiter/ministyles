@@ -1,0 +1,13 @@
+html[data-darkreader-scheme] body {
+  display: none;
+}
+html[data-darkreader-scheme]::before {
+  content: 'This site is dark themed! Dark reader breaks this site, so please disable it.';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  text-align: center;
+  background: #1e2030;
+}
