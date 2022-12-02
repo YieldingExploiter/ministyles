@@ -14,7 +14,7 @@ fs.readdirSync('.').filter(v=>v.endsWith('.css')).sort((a,b)=>getCount(a)>getCou
   if (alrHas[generic]) return;
   alrHas.push(generic)
   const thisItemCount = getCount(v);
-  importMd+=`${thisItemCount>itemCount?`\n<br/><br/>\n\n# Combination Depth ${thisItemCount}\n`:''}<a href="https://ministyles.astolfo.gay/${v}"><kbd>
+  importMd+=`${thisItemCount>itemCount?`\n\n# Combination Depth ${thisItemCount}\n`:''}<a href="https://ministyles.astolfo.gay/${v}"><kbd>
   <br/>
   &nbsp;&nbsp;${v}&nbsp;&nbsp;
   <br/>
