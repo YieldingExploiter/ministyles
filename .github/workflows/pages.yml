@@ -28,7 +28,9 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v2
       - name: Concat Files
-        run: cat *.css > all.css
+        run: |
+          echo "/* Combination of all stylesheets */" > all.css
+          cat *.css >> all.css
       - name: Create Combos for optimization
         run: node .github/combination-gen.js
       - name: Add gen thing
