@@ -25,6 +25,8 @@ jobs:
         uses: actions/checkout@v3
       - name: Setup Node.js environment
         uses: actions/setup-node@v3.5.1
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2.2.4
       - name: Setup Pages
         uses: actions/configure-pages@v2
       - name: Concat Files
@@ -32,8 +34,6 @@ jobs:
           echo "/* Combination of all stylesheets */" > all
           cat *.css >> all
           mv all all.css
-      - name: Install PNPM
-        run: curl -fsSL https://get.pnpm.io/install.sh | sh -
       - name: Install Dependencies
         run: pnpm i ignore
       - name: Create Combos for optimization
