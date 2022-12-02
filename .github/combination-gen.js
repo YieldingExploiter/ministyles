@@ -45,6 +45,6 @@ items5.forEach(v=>{
     split.pop();
     return split.join('.')
   }).join('+')+'.css'
-  const fileContent = v.map(v=>'/* '+v+' */\n'+readCache[v]).join('\n/* ============================= */\n')
+  const fileContent = v.map(v=>'/* '+v+' */\n'+readCache[v].trim()).join('\n/* ============================= */\n')
   fs.writeFileSync(combinationFilename,fileContent)
 })
