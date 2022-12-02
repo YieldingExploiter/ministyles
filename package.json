@@ -1,5 +1,6 @@
 {
-	"dependencies": {
-		"ignore": "^5.2.1"
-	}
+  "dependencies": {
+    "ignore": "^5.2.1"
+  },
+  "packageManager": "pnpm@7.17.1"
 }
