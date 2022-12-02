@@ -54,7 +54,7 @@ const recursiveReadDirSync = function(dirPath, arrayOfFiles) {
 
   files.forEach(function(file) {
     if (fs.statSync(dirPath + "/" + file).isDirectory()) {
-      arrayOfFiles = getAllFiles(dirPath + "/" + file, arrayOfFiles)
+      arrayOfFiles = recursiveReadDirSync(dirPath + "/" + file, arrayOfFiles)
     } else {
       arrayOfFiles.push(path.join(__dirname, dirPath, "/", file))
     }
