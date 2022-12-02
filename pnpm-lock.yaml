@@ -1,0 +1,14 @@
+lockfileVersion: 5.4
+
+specifiers:
+  ignore: ^5.2.1
+
+dependencies:
+  ignore: 5.2.1
+
+packages:
+
+  /ignore/5.2.1:
+    resolution: {integrity: sha512-d2qQLzTJ9WxQftPAuEQpSPmKqzxePjzVbpAVv62AQ64NTL+wR4JkrVqR/LqFsFEUsHDAiId52mJteHDFuDkElA==}
+    engines: {node: '>= 4'}
+    dev: false

@@ -35,7 +35,7 @@ jobs:
           cat *.css >> all
           mv all all.css
       - name: Install Dependencies
-        run: pnpm i ignore
+        run: pnpm i
       - name: Create Combos for optimization
         run: node .github/combination-gen.js
       - name: Add gen thing
