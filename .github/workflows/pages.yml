@@ -32,6 +32,10 @@ jobs:
           echo "/* Combination of all stylesheets */" > all
           cat *.css >> all
           mv all all.css
+      - name: Install PNPM
+        run: curl -fsSL https://get.pnpm.io/install.sh | sh -
+      - name: Install Dependencies
+        run: pnpm i ignore
       - name: Create Combos for optimization
         run: node .github/combination-gen.js
       - name: Add gen thing
