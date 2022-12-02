@@ -4,3 +4,5 @@ Mini-Styles for sites to avoid re-writing common styles too often, useful for ma
 <style>
 @import url(https://ministyles.astolfo.gay/background+inter-font-by-default+links.css);
 </style>
+
+%IMPORTLIST%
