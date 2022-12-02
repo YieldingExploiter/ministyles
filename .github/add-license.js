@@ -45,20 +45,16 @@ beerWare.md=beerWare.html+'\n\n';
 // recursive readdirsync - https://coderrocketfuel.com/article/recursively-list-all-the-files-in-a-directory-using-node-js
 const fs = require("fs")
 const path = require("path")
-const recursiveReadDirSync = function(dirPath, arrayOfFiles) {
-  files = fs.readdirSync(dirPath)
-
-  arrayOfFiles = arrayOfFiles || []
-
-  files.forEach(function(file) {
-    if (fs.statSync(dirPath + "/" + file).isDirectory()) {
-      arrayOfFiles = recursiveReadDirSync(dirPath + "/" + file, arrayOfFiles)
-    } else {
-      arrayOfFiles.push(path.join(__dirname, dirPath, "/", file))
-    }
-  })
-
-  return arrayOfFiles
+const recursiveReadDirSync = root => {
+  let files = [];
+  const recurse = (dir) => {
+    if (fs.statSync(dir).isDirectory())
+      fs.readdirSync(dir).forEach(v=>recurse(path.join(dir,v)))
+    else
+      files.push(dir)
+  }
+  recurse(root)
+  return files
 }
 // perform shit
 const ignore = require('ignore')()
