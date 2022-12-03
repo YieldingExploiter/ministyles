@@ -87,7 +87,7 @@ for(i=0;i<50;i++) {
   p = p2;
 }
 if (fs.statSync(p).isFile())ignore.add(fs.readFileSync(p))
-recursiveReadDirSync(process.cwd()).forEach(relPath=>{
+recursiveReadDirSync('.').forEach(relPath=>{
   if (relPath.includes('.git/')) return;
   if (ignore.ignores(relPath)) return;
   const ext = relPath.split('.').pop().toLowerCase();
