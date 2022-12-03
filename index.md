@@ -18,7 +18,7 @@ To load these, copy the URL & use one of the following in your HEAD tag:
 ```
 
 ### Uncombined
-You can combine any of these' filenames (excluding .css; add .css at the end of the list of styles) with `+` to get a single css file with all of their contents - the contents are in the order you specify them in.
+You can combine any of these' filenames (excluding .css; add .css at the end of the list of styles) with `+` to get a single css file with all of their contents - the contents are in the order you specify them in. You can combine up to **5** styles at once. Any more than that will 404.
 
 %IMPORTLIST%
 
