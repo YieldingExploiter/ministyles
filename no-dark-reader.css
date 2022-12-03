@@ -1,3 +1,4 @@
+/* Notifies the user to stop using dark reader */
 html[data-darkreader-scheme] body {
   display: none;
 }
@@ -8,6 +9,7 @@ html[data-darkreader-scheme]::before {
   left: 0;
   width: 100vw;
   height: 100vh;
+  padding-top: 0.5em;
   text-align: center;
   background: #1e2030;
 }
