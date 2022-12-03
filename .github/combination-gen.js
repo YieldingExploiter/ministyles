@@ -29,7 +29,7 @@ const unique = (table) => {
 const files = fs.readdirSync(process.cwd()).filter(v => v.toLowerCase().endsWith('.css')).filter(v=>v!=='all.css')
 files.forEach(v=>readCache[v]=fs.readFileSync(v,'utf-8'))
 let query = [];
-for (let i = 0; i < files.length; i++) {
+for (let i = 0; i < Math.min(files.length,5); i++) {
   query.push([...files,''])
 }
 const items1 = allPossibleCases(query).map(v=>v.split(' '))
