@@ -98,7 +98,13 @@ recursiveReadDirSync('.').forEach(relPath=>{
   }
   if (beerWare[ext]) {
     console.log('Beer-ing',relPath)
-    fs.writeFileSync(relPath,`${beerWare[ext]}
+    let shebang = '';
+    if (file.startsWith('#!')) {
+      const split = file.split('\n');
+      shebang = split.shift() + '\n';
+      file = split.join('\n')
+    }
+    fs.writeFileSync(relPath,`${shebang}${beerWare[ext]}
 ${file}`)
   }
 })
