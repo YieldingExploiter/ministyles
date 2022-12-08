@@ -35,7 +35,7 @@ this stuff is worth it, you can buy me a beer in return | YieldingExploiter<br/>
 
 <style>
   @import url('https://ministyles.astolfo.gay/background+links+gh-kbd+padding-kbd+code.css');
-  @import url('https://ministyles.astolfo.gay/inter-font-by-default.css');
+  @import url('https://ministyles.astolfo.gay/inter-font-by-default+no-dark-reader.css');
   .markdown-body .highlight pre, .markdown-body pre, .highlight {
     background: #181926;
     border-radius: 8px;
