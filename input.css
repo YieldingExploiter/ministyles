@@ -1,0 +1,17 @@
+/* Format inputs to fit with the user's theme */
+/* https://github.com/catppuccin/catppuccin#-palettes -> Macchiato */
+input:not(.default):not([data-default]) {
+  background: #1e2030;
+  padding: 4px 4px;
+  border: none;
+  color: #cad3f5;
+}
+/* https://github.com/catppuccin/catppuccin#-palettes -> Latte */
+@media (prefers-color-scheme: light) {
+  input:not(.default):not([data-default]) {
+    background: #eff1f5;
+    padding: 4px 4px;
+    border: none;
+    color: #4c4f69;
+  }
+}
