@@ -29,13 +29,10 @@ jobs:
         uses: pnpm/action-setup@v2.2.4
       - name: Setup Pages
         uses: actions/configure-pages@v2
-      - name: Concat Files
-        run: |
-          echo "/* Combination of all stylesheets */" > all
-          cat *.css >> all
-          mv all all.css
       - name: Install Dependencies
         run: pnpm i
+      - name: Concat Files
+        run: node .github/all.js
       - name: Create Combos for optimization
         run: node .github/combination-gen.js
       - name: Add gen thing
